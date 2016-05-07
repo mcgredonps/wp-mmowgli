@@ -5,6 +5,8 @@ namespace M1\Classes;
 class Card extends Post
 {
 
+    public static $post_type = 'card';
+
     public static $post_type_args = array(
         'public'       => true,
         'hierarchical' => true,

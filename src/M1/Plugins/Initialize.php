@@ -34,6 +34,8 @@ class Initialize
    */
     private function initialize_hooks()
     {
+        add_action('enter_title_here', array(&$this, 'enter_title_here'), 10, 2);
+
         add_action('admin_head', array(&$this, 'admin_head'), 10, 0);
 
         add_action('wp_head', array(&$this, 'wp_head'), 10, 0);
@@ -91,6 +93,24 @@ class Initialize
         add_filter('game_card_content', array(&$this, 'add_game_card_parent'), 15, 2);
 
         add_filter('game_card_content', array(&$this, 'add_game_card_children'), 25, 2);
+    }
+
+    /**
+     * Change the 'enter_title_here' placeholder on game and title post edit
+     * @return string The 'enter_title_here' placeholder
+     * @category hook
+     */
+    public function enter_title_here($title, $post)
+    {
+        if (Game::instance()->set_post($post)->is_game_post_type()) {
+            return 'Enter ' . Game::$post_type . ' title here';
+        }
+
+        if (Card::instance()->set_post($post)->is_card_post_type()) {
+            return 'Enter ' . Card::$post_type . ' title here';
+        }
+
+        return $title;
     }
 
     /**
