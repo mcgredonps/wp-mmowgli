@@ -4,6 +4,9 @@ Plugin Name: WP MMOWGLI
 Plugin URI: https://github.com/echo1consulting/wp-mmowgli
 Description: MMOWGLI stands for Massive Multiplayer Online War Game Leveraging the Internet. It is a message-based game used to encourage innovative thinking by many people, connected via the internet. This project is based on the original MMOWGLI project (https://portal.mmowgli.nps.edu/) initiated by the Office of Naval Research (ONR) for the United States Navy. This project aims to port MMOWGLI capabilities on the open-source WordPress framework.
 Version: 1.0
+Author: Echo1 Consulting
+Author URI: https://github.com/echo1consulting
+License: GPL2
 */
 
 // The full url to the plugin directory (ends with trailing slash)
