@@ -252,7 +252,7 @@ class Initialize
         $cards_list = Helper::get_cards_list($post->post_type, array('child_of' => $post->ID, 'depth' => 3));
 
         if (!empty($cards_list)) {
-            return $content . "<div class='bootstrap-mmowgli'>" ."<span style='display: block;'>Child Cards: </span>".$cards_list  . '</div>';
+            return $content . "<div class='bootstrap-mmowgli'>" . "<span style='display: block;'>Child Cards: </span>" . $cards_list  . '</div>';
         }
 
         return $content;
@@ -269,7 +269,7 @@ class Initialize
         $parent_post = Card::instance()->set_post($post)->get_parent();
 
         if ($parent_post) {
-            return $content. "<div class='bootstrap-mmowgli'>" . "<span style='display: block;'>Parent Card: </span>"."<a href='".get_permalink($parent_post)."'>".get_the_title($parent_post).'</a>' . '</div>';
+            return $content . "<div class='bootstrap-mmowgli'>" . "<span style='display: block;'>Parent Card: </span>" . "<a href='" . get_permalink($parent_post) . "'>" . get_the_title($parent_post) . '</a>' . '</div>';
         }
 
         return $content;
@@ -283,7 +283,7 @@ class Initialize
      */
     public function add_game_cards_list($content, $post)
     {
-        return $content . "<div class='bootstrap-mmowgli'>" . Helper::get_cards_list(Game::$post_type.'-'.$post->ID) . '</div>';
+        return $content . "<div class='bootstrap-mmowgli'>" . Helper::get_cards_list(Game::$post_type . '-' . $post->ID) . '</div>';
     }
 
     /**
@@ -294,7 +294,7 @@ class Initialize
      */
     public function add_game_description($content, $post)
     {
-        return $content . "<div class='bootstrap-mmowgli'>" .'<p>'.Helper::get_game_description($post->ID).'</p>'. '</div>';
+        return $content . "<div class='bootstrap-mmowgli'>" .'<p>'.Helper::get_game_description($post->ID) . '</p>' . '</div>';
     }
 
     /**
