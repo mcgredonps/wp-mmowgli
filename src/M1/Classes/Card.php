@@ -5,6 +5,7 @@ namespace M1\Classes;
 class Card extends Post
 {
 
+    // Placeholder - Card post types are dynamically generated
     public static $post_type = 'card';
 
     public static $post_type_args = array(
