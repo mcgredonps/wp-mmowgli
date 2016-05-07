@@ -1,18 +1,17 @@
 {
-	"name": "echo1consulting/network-plugins-data",
+	"name": "echo1consulting/wp-mmowgli",
 	"description": "",
 	"repositories": [
 		{
 			"type": "composer",
-			"url": "http://wpackagist.org"
+			"url": "https://wpackagist.org"
 		}
 	],
 	"require": {
-
-		"wpackagist-plugin/redux-framework": "3.5.*",
-		"wpackagist-plugin/cmb2": "2.2.*",
+		"brandonwamboldt/utilphp" : "1.1.*",
 		"hashids/hashids" : "1.0.*",
-		"brandonwamboldt/utilphp" : "1.1.*"
+		"wpackagist-plugin/cmb2": "2.2.*",
+		"wpackagist-plugin/redux-framework": "3.5.*"
 	},
 	"extra": {
 		"installer-paths": {
