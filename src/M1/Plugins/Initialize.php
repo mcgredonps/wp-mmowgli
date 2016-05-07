@@ -442,7 +442,7 @@ class Initialize
     {
         wp_enqueue_style(Config::$plugin_prefix . '-bootstrap', MMOWGLI_PLUGIN_URL . 'assets/css/bootstrap-custom.css');
 
-        wp_enqueue_style(Config::$plugin_prefix . '-font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css');
+        wp_enqueue_style(Config::$plugin_prefix . '-font-awesome', MMOWGLI_PLUGIN_URL . 'assets/css/font-awesome.css');
 
         wp_enqueue_style(Config::$plugin_prefix . '-style', MMOWGLI_PLUGIN_URL . 'assets/css/style.css', array( Config::$plugin_prefix . '-bootstrap', Config::$plugin_prefix . '-font-awesome'));
     }
