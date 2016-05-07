@@ -1,0 +1,9 @@
+.bootstrap-mmowgli ul > li {
+  list-style: none;
+}
+
+.bootstrap-mmowgli a,
+.bootstrap-mmowgli a:hover {
+ border: 0 !important;
+ text-decoration: none;
+}

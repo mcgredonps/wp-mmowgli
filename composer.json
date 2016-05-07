@@ -1,0 +1,28 @@
+{
+	"name": "echo1consulting/network-plugins-data",
+	"description": "",
+	"repositories": [
+		{
+			"type": "composer",
+			"url": "http://wpackagist.org"
+		}
+	],
+	"require": {
+
+		"wpackagist-plugin/redux-framework": "3.5.*",
+		"wpackagist-plugin/cmb2": "2.2.*",
+		"hashids/hashids" : "1.0.*",
+		"brandonwamboldt/utilphp" : "1.1.*"
+	},
+	"extra": {
+		"installer-paths": {
+			"vendor/{$name}/": ["type:wordpress-plugin"]
+		}
+	},
+	"autoload": {
+		"files": ["vendor/cmb2/init.php"],
+		"psr-0": {
+			"M1\\": "src/"
+		}
+	}
+}
