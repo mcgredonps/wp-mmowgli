@@ -22,7 +22,7 @@ Composer is licensed under the MIT License - see the LICENSE file for details
 Acknowledgments
 ---------------
 
-- This project started out as a WordPress port of [MMOWGLI](https://portal.mmowgli.nps.edu/) - developed by the Office of Naval Research (ONR) for the United States Navy.
+- This project started out as a WordPress port of [MMOWGLI](https://portal.mmowgli.nps.edu/) - developed by the Office of Naval Research (ONR).
 - This project uses open source libraries and plugins to reduce development time. Thanks!
     -   [CMB2](https://github.com/WebDevStudios/CMB2)
     -   [Hash Ids](https://github.com/ivanakimov/hashids.php)
