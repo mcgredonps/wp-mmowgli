@@ -12,6 +12,10 @@ class Initialize
 
     private static $instance;
 
+    /**
+     * Ensure that we are only working with one instance of this Classes
+     * @return object self
+     */
     public static function instance()
     {
         if (!self::$instance) {
@@ -23,6 +27,11 @@ class Initialize
         return self::$instance;
     }
 
+  /**
+   * Initializes hooks
+   * @return null
+   * @category function
+   */
     private function initialize_hooks()
     {
         add_action('admin_head', array(&$this, 'admin_head'), 10, 0);
@@ -427,15 +436,25 @@ class Initialize
     /**
      * Enqueue scripts for the front end
      * @return    null
+     * @category  function
+     */
+    public function enqueue_scripts()
+    {
+        wp_enqueue_style(Config::$plugin_prefix . '-bootstrap', MMOWGLI_PLUGIN_URL . 'assets/css/bootstrap-custom.css');
+
+        wp_enqueue_style(Config::$plugin_prefix . '-font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css');
+
+        wp_enqueue_style(Config::$plugin_prefix . '-style', MMOWGLI_PLUGIN_URL . 'assets/css/style.css', array( Config::$plugin_prefix . '-bootstrap', Config::$plugin_prefix . '-font-awesome'));
+    }
+
+    /**
+     * Enqueue scripts for the front end
+     * @return    null
      * @category  hook
      */
     public function wp_enqueue_scripts()
     {
-        wp_enqueue_style('bootstrap', MMOWGLI_PLUGIN_URL . 'assets/css/bootstrap.css');
-
-        wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css');
-
-        wp_enqueue_style('style-front', MMOWGLI_PLUGIN_URL . 'assets/css/style-front.css', array('bootstrap', 'font-awesome'));
+        $this->enqueue_scripts();
     }
 
     /**
@@ -445,11 +464,7 @@ class Initialize
      */
     public function admin_enqueue_scripts()
     {
-        wp_enqueue_style('bootstrap', MMOWGLI_PLUGIN_URL . 'assets/css/bootstrap.css');
-
-        wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css');
-
-        wp_enqueue_style('style-back', MMOWGLI_PLUGIN_URL . 'assets/css/style-back.css', array('bootstrap', 'font-awesome'));
+        $this->enqueue_scripts();
     }
 
     /**
