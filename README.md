@@ -12,12 +12,12 @@ Installation / Usage
 Requirements
 ------------
 
-PHP 5.3.2 or above (at least 5.3.4 recommended to avoid potential bugs)
+PHP 5.3.2 or above (at least 5.3.4 recommended to avoid potential bugs).
 
 License
 -------
 
-WP MMOWGLI is licensed under the GPL License - see the LICENSE file for details
+WP MMOWGLI is licensed under the GPL License - see the LICENSE file for details.
 
 Acknowledgments
 ---------------
