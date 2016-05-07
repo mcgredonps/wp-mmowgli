@@ -142,7 +142,7 @@ class Game extends Post
                     $game_card_configurations[ $key ][ 'id' ] = self::generate_card_type_id($this->post->ID);
                 }
             }
-            update_post_meta($this->post->ID, 'mmowgli_game_card_configuration', $game_card_configurations);
+            update_post_meta($this->post->ID, Config::$plugin_prefix . '_game_card_configuration', $game_card_configurations);
         }
     }
 
