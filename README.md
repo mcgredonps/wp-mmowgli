@@ -24,7 +24,9 @@ Acknowledgments
 
 - This project started out as a WordPress port of [MMOWGLI](https://portal.mmowgli.nps.edu/) - developed by the Office of Naval Research (ONR).
 - This project uses open source libraries and plugins to reduce development time. Thanks!
+    -   [Bootstrap](https://getbootstrap.com/)
     -   [CMB2](https://github.com/WebDevStudios/CMB2)
+    -   [Font Awesome](https://fortawesome.github.io/Font-Awesome/)
     -   [Hash Ids](https://github.com/ivanakimov/hashids.php)
     -   [Redux Framework](https://github.com/reduxframework/redux-framework)
     -   [UtilPHP](https://github.com/brandonwamboldt/utilphp)
