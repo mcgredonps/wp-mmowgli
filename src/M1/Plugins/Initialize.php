@@ -294,7 +294,7 @@ class Initialize
      */
     public function add_game_description($content, $post)
     {
-        return $content . "<div class='bootstrap-mmowgli'>" .'<p>'.Helper::get_game_description($post->ID) . '</p>' . '</div>';
+        return $content . "<div class='bootstrap-mmowgli'>" . '<p>' . Helper::get_game_description($post->ID) . '</p>' . '</div>';
     }
 
     /**
