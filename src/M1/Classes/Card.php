@@ -145,20 +145,22 @@ class Card extends Post
     {
         $post_type = Helper::get_post_type_admin_params();
 
-        $options = Game::get_card_configurations_by_post_type($post_type);
+        if (!empty($post_type)) {
+            $options = Game::get_card_configurations_by_post_type($post_type);
 
-        $card_details = new_cmb2_box(array(
-              'id'           => Config::$plugin_prefix.'_game_card_details',
-              'title'        => 'Card Details',
-              'object_types' => Game::get_post_types(),
-          ));
+            $card_details = new_cmb2_box(array(
+                'id'           => Config::$plugin_prefix.'_game_card_details',
+                'title'        => 'Card Details',
+                'object_types' => Game::get_post_types(),
+            ));
 
-        $card_details->add_field(array(
-              'name'        => 'Card Type',
-              'description' => '',
-              'id'          => Config::$plugin_prefix . '_card_type',
-              'type'        => 'select',
-              'options'     => $options,
-          ));
+            $card_details->add_field(array(
+                'name'        => 'Card Type',
+                'description' => '',
+                'id'          => Config::$plugin_prefix . '_card_type',
+                'type'        => 'select',
+                'options'     => $options,
+            ));
+        }
     }
 }

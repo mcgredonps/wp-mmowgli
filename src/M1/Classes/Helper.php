@@ -91,17 +91,18 @@ class Helper
      */
     public static function get_post_type_admin_params()
     {
+        $post_type = '';
 
-      // If we are editing an existing card
-      if (isset($_GET[ 'post' ])) {
-          $post = get_post($_GET[ 'post' ]);
+        // If we are editing an existing card
+        if (isset($_GET[ 'post' ])) {
+            $post = get_post($_GET[ 'post' ]);
 
-          $post_type = $post->post_type;
+            $post_type = $post->post_type;
 
-      // If we are creating a new card
-      } elseif (isset($_GET[ 'post_type' ])) {
-          $post_type = $_GET[ 'post_type' ];
-      }
+        // If we are creating a new card
+        } elseif (isset($_GET[ 'post_type' ])) {
+            $post_type = $_GET[ 'post_type' ];
+        }
 
         return $post_type;
     }
