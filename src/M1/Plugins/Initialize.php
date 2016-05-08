@@ -12,7 +12,7 @@ class Initialize
 
     private static $instance;
 
-    private $widgets = array('NewCardButton');
+    private $widgets = array('NewCardButton', 'GameList');
 
     /**
      * Ensure that we are only working with one instance of this Classes
@@ -331,7 +331,7 @@ class Initialize
             return $content;
         }
 
-        $cards_list = Helper::get_cards_list($post->post_type, array('child_of' => $post->ID, 'depth' => 3));
+        $cards_list = Helper::get_html_list($post->post_type, array('child_of' => $post->ID, 'depth' => 3));
 
         if (!empty($cards_list)) {
             return $content . "<div class='bootstrap-mmowgli'>" . "<span style='display: block;'>Child Cards: </span>" . $cards_list  . '</div>';
@@ -369,7 +369,7 @@ class Initialize
      */
     public function add_game_cards_list($content, $post)
     {
-        return $content . "<div class='bootstrap-mmowgli'>" . Helper::get_cards_list(Game::$post_type . '-' . $post->ID) . '</div>';
+        return $content . "<div class='bootstrap-mmowgli'>" . Helper::get_html_list(Game::$post_type . '-' . $post->ID) . '</div>';
     }
 
     /**

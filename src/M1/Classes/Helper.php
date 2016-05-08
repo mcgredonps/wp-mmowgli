@@ -40,7 +40,7 @@ class Helper
      * @return string            HTML
      * @category function
      */
-    public static function get_cards_list($post_type, $args = array())
+    public static function get_html_list($post_type, $args = array())
     {
         $list = wp_list_pages(array_merge(array(
             'child_of'    => null,
