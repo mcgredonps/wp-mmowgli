@@ -12,6 +12,8 @@ class Initialize
 
     private static $instance;
 
+    private $widgets = array();
+
     /**
      * Ensure that we are only working with one instance of this Classes
      * @return object self
@@ -105,9 +107,16 @@ class Initialize
         add_action('print_new_card_button', array(&$this, 'print_new_card_button'), 10, 1);
     }
 
+    /**
+     * Registers all widgets in the widgets namespace
+     * @return null
+     * @category hook
+     */
     public function register_widgets()
     {
-        register_widget('\M1\Widgets\NewCard');
+        foreach ($this->widgets as $widget) {
+            register_widget("\M1\Widgets\{$widget}");
+        }
     }
 
     /**
