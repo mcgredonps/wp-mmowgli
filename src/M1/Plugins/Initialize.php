@@ -34,7 +34,13 @@ class Initialize
    */
     private function initialize_hooks()
     {
+        add_action('widgets_init', array(&$this, 'register_widgets'), 10);
+
+
+
         add_action('enter_title_here', array(&$this, 'enter_title_here'), 10, 2);
+
+
 
         add_action('admin_head', array(&$this, 'admin_head'), 10, 0);
 
@@ -93,6 +99,11 @@ class Initialize
         add_filter('game_card_content', array(&$this, 'add_game_card_parent'), 15, 2);
 
         add_filter('game_card_content', array(&$this, 'add_game_card_children'), 25, 2);
+    }
+
+    public function register_widgets()
+    {
+        register_widget('\M1\Widgets\NewCard');
     }
 
     /**
