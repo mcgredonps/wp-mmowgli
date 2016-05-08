@@ -122,9 +122,28 @@ class Game extends Post
      * @return boolean
      * @category function
      */
-    public function is_game_post_type()
+    public function is_game_post_type($post_type = null)
     {
-        return ($this->post->post_type == Game::$post_type);
+        if (is_null($post_type)) {
+            if (!$this->is_post()) {
+                return false;
+            }
+            $post_type = $this->post->post_type;
+        }
+
+        return ($post_type == Game::$post_type);
+    }
+
+    /**
+     * Get the number of published cards for a game
+     * @return int
+     * @category function
+     */
+    public function get_card_count()
+    {
+        $count = wp_count_posts(self::$post_type . '-' . $this->post->ID);
+
+        return $count->publish;
     }
 
     /**

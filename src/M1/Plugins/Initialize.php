@@ -58,9 +58,17 @@ class Initialize
 
         add_filter('the_title', array(&$this, 'title_card_type_square_prefix'), 10, 2);
 
+
+
         add_filter('manage_posts_columns', array(&$this, 'add_card_type_square_column'), 10, 2);
 
         add_filter('manage_pages_custom_column', array(&$this, 'add_card_type_square_column_data'), 10, 2);
+
+
+
+        add_filter('manage_posts_columns', array(&$this, 'add_game_card_count_column'), 10, 2);
+
+        add_filter('manage_game_posts_custom_column', array(&$this, 'add_game_card_count_column_data'), 10, 2);
 
 
 
@@ -195,6 +203,48 @@ class Initialize
         }
 
         echo "</style>";
+    }
+
+    /**
+     * Add the card count column to the backend game post type list
+     * @param array $posts_columns  The posts column
+     * @param string $post_type     The post type of the current page
+     * @category hook
+     */
+    public function add_game_card_count_column($posts_columns, $post_type)
+    {
+        if (!Game::instance()->is_game_post_type($post_type)) {
+            return $posts_columns;
+        }
+
+        $new = array();
+
+        foreach ($posts_columns as $key => $title) {
+            if ($key == 'date') {
+                $new[ Config::$game_card_count_column_key ] = 'Card Count';
+            }
+
+            $new[ $key ] = $title;
+        }
+
+        return $new;
+    }
+
+    /**
+     * Print the card type square in the column on the backedn post type list
+     * @param string $column  The column namespace
+     * @param int $post_id The post id of the printed row
+     * @category hook
+     */
+    public function add_game_card_count_column_data($column, $post_id)
+    {
+        global $post;
+
+        if (Game::instance()->set_post($post)->is_game_post_type()) {
+            if ($column == Config::$game_card_count_column_key) {
+                echo Game::instance()->set_post($post)->get_card_count();
+            }
+        }
     }
 
     /**
