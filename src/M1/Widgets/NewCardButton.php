@@ -4,7 +4,7 @@ namespace M1\Widgets;
 
 use Former\Facades\Former;
 
-class NewCard extends \WP_Widget
+class NewCardButton extends \WP_Widget
 {
 
     public $widget = array( 'id'          => 'mmowgli-new-card-button',
