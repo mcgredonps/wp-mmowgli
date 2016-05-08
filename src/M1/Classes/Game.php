@@ -147,6 +147,16 @@ class Game extends Post
     }
 
     /**
+     * Get the card admin list
+     * @return int
+     * @category function
+     */
+    public function get_card_admin_list($link_text = 'View all')
+    {
+        return '<a href="' . admin_url('edit.php?post_type=' . self::$post_type . '-' . $this->post->ID) . '">' . $link_text . '</a>' ;
+    }
+
+    /**
      * Generate card type ids for a post id
      * @return null
      * @category function

@@ -242,7 +242,9 @@ class Initialize
 
         if (Game::instance()->set_post($post)->is_game_post_type()) {
             if ($column == Config::$game_card_count_column_key) {
-                echo Game::instance()->set_post($post)->get_card_count();
+                $card_count = Game::instance()->set_post($post)->get_card_count();
+
+                echo Game::instance()->set_post($post)->get_card_admin_list($card_count);
             }
         }
     }
