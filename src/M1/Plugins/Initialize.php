@@ -99,6 +99,10 @@ class Initialize
         add_filter('game_card_content', array(&$this, 'add_game_card_parent'), 15, 2);
 
         add_filter('game_card_content', array(&$this, 'add_game_card_children'), 25, 2);
+
+
+
+        add_action('print_new_card_button', array(&$this, 'print_new_card_button'), 10, 1);
     }
 
     public function register_widgets()
@@ -536,5 +540,12 @@ class Initialize
     public function register_game_card_post_types_meta_boxes()
     {
         Card::register_meta_boxes();
+    }
+
+    public function print_new_card_button($button_text = 'Create a new card')
+    {
+        echo "<div class='bootstrap-mmowgli'>";
+        echo "<button type='button' class='btn btn-primary new-game-card'>{$button_text}</button>";
+        echo "</div>";
     }
 }
