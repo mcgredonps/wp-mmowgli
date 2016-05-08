@@ -131,7 +131,7 @@ class Game extends Post
             $post_type = $this->post->post_type;
         }
 
-        return ($post_type == Game::$post_type);
+        return ($post_type == self::$post_type);
     }
 
     /**
@@ -195,7 +195,7 @@ class Game extends Post
     {
         if (!self::$game_data) {
             $games = get_posts(array(
-                'post_type'      => Game::$post_type,
+                'post_type'      => self::$post_type,
                 'post_status'    => 'publish',
                 'posts_per_page' => 250,
             ));
@@ -206,13 +206,13 @@ class Game extends Post
 
                     $game_data->post_id = $post->ID;
 
-                    $game_data->post_type = Game::$post_type . '-' . $post->ID;
+                    $game_data->post_type = self::$post_type . '-' . $post->ID;
 
                     $game_data->post_title = $post->post_title;
 
                     $game_data->card_configurations = self::get_card_configurations($post->ID);
 
-                    self::$game_data[ Game::$post_type . '-' . $post->ID ] = $game_data;
+                    self::$game_data[ self::$post_type . '-' . $post->ID ] = $game_data;
                 }
             } else {
                 self::$game_data = array( );
@@ -230,7 +230,7 @@ class Game extends Post
     public static function get_card_configurations_mappings()
     {
         if (!self::$configurations_mappings) {
-            foreach (Game::get_data() as $post_type => $data) {
+            foreach (self::get_data() as $post_type => $data) {
                 if (!is_array($data->card_configurations)) {
                     continue;
                 }
@@ -253,7 +253,7 @@ class Game extends Post
     public static function get_card_configurations_by_post_type($post_type, $configs = array())
     {
         // Get the game data
-        $game_data = Game::get_data();
+        $game_data = self::get_data();
 
         // If the card configurations are set
         if (isset($game_data[$post_type]->card_configurations)) {
@@ -295,7 +295,7 @@ class Game extends Post
      */
     public static function get_post_types()
     {
-        return util::array_pluck(Game::get_data(), 'post_type');
+        return util::array_pluck(self::get_data(), 'post_type');
     }
 
     /**
