@@ -9,6 +9,8 @@ Installation / Usage
 1. This plugin requires composer to install plugin dependencies. Clone this repository and run: `composer install`
 2. When the composer install is complete, install this repository as you would any WordPress plugin.
 
+Additional instructions and screenshots will be available in a future release. Game setup and configurations can be done from the administrator area under "Games".
+
 Requirements
 ------------
 
