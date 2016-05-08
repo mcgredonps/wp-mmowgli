@@ -12,7 +12,7 @@ class Initialize
 
     private static $instance;
 
-    private $widgets = array();
+    private $widgets = array('NewCard');
 
     /**
      * Ensure that we are only working with one instance of this Classes
@@ -115,7 +115,7 @@ class Initialize
     public function register_widgets()
     {
         foreach ($this->widgets as $widget) {
-            register_widget("\M1\Widgets\{$widget}");
+            register_widget("\M1\Widgets\\{$widget}");
         }
     }
 
