@@ -17,9 +17,6 @@ class Card extends Post
             'comments',
             'page-attributes'
         ),
-        'taxonomies' => array(
-            'post_tag'
-        ),
         'menu_icon' => 'dashicons-schedule'
     );
 
@@ -46,6 +43,41 @@ class Card extends Post
         'items_list_navigation' => 'Cards list navigation',
         'filter_items_list'     => 'Filter cards list',
     );
+
+
+    public static $post_tag = 'card_tag';
+
+    public static $post_tag_labels = array(
+            'name'                       => 'Card Tags',
+            'singular_name'              => 'Card Tag',
+            'menu_name'                  => 'Card Tag',
+            'all_items'                  => 'All Items',
+            'parent_item'                => 'Parent Tag',
+            'parent_item_colon'          => 'Parent Tag:',
+            'new_item_name'              => 'New Tag',
+            'add_new_item'               => 'Add New Tag',
+            'edit_item'                  => 'Edit Tag',
+            'update_item'                => 'Update Tag',
+            'view_item'                  => 'View Tag',
+            'separate_items_with_commas' => 'Separate tags with commas',
+            'add_or_remove_items'        => 'Add or remove tags',
+            'choose_from_most_used'      => 'Choose from the most used tags',
+            'popular_items'              => 'Popular tags',
+            'search_items'               => 'Search tags',
+            'not_found'                  => 'Not tags found',
+            'no_terms'                   => 'No tags',
+            'items_list'                 => 'Tags list',
+            'items_list_navigation'      => 'Tags list navigation',
+        );
+
+    public static $post_tag_args = array(
+            'hierarchical'               => false,
+            'public'                     => true,
+            'show_ui'                    => true,
+            'show_admin_column'          => true,
+            'show_in_nav_menus'          => false,
+            'show_tagcloud'              => true,
+        );
 
     private static $instance;
 
@@ -117,6 +149,18 @@ class Card extends Post
     public static function get_card_type($post_id)
     {
         return get_post_meta($post_id, Config::$plugin_prefix . '_card_type', true);
+    }
+
+    /**
+     * Registers the card post tags
+     * @return null
+     * @category function
+     */
+    public static function register_post_tags()
+    {
+        self::$post_tag_args['labels'] = self::$post_tag_labels;
+
+        register_taxonomy(self::$post_tag, Game::get_post_types(), self::$post_tag_args);
     }
 
     /**

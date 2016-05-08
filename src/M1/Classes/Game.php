@@ -202,6 +202,9 @@ class Game extends Post
     {
         if (!self::$configurations_mappings) {
             foreach (Game::get_data() as $post_type => $data) {
+                if (!is_array($data->card_configurations)) {
+                    continue;
+                }
                 foreach ($data->card_configurations as $config) {
                     self::$configurations_mappings[ $config['id'] ] = $config;
                 }

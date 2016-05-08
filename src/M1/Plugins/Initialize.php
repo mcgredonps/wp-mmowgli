@@ -64,13 +64,15 @@ class Initialize
 
 
 
-        add_action('init', array(&$this, 'register_game_post_type'), 1);
+        add_action('init', array(&$this, 'register_game_post_type'), 2);
 
         add_action('cmb2_admin_init', array(&$this, 'register_game_post_type_meta_boxes'), 10);
 
         add_action('admin_menu', array(&$this, 'remove_game_post_type_default_meta_boxes'), 10);
 
 
+
+        add_action('init', array(&$this, 'register_game_card_post_tags'), 2);
 
         add_action('init', array(&$this, 'register_game_card_post_types'), 1);
 
@@ -273,6 +275,10 @@ class Initialize
      */
     public function add_game_card_children($content, $post)
     {
+        if (!is_single()) {
+            return $content;
+        }
+
         $cards_list = Helper::get_cards_list($post->post_type, array('child_of' => $post->ID, 'depth' => 3));
 
         if (!empty($cards_list)) {
@@ -290,6 +296,10 @@ class Initialize
      */
     public function add_game_card_parent($content, $post)
     {
+        if (!is_single()) {
+            return $content;
+        }
+
         $parent_post = Card::instance()->set_post($post)->get_parent();
 
         if ($parent_post) {
@@ -531,6 +541,16 @@ class Initialize
     public function register_game_post_type_meta_boxes()
     {
         Game::register_meta_boxes();
+    }
+
+    /**
+     * Register the card post tags
+     * @return    null
+     * @category  hook
+     */
+    public function register_game_card_post_tags()
+    {
+        Card::register_post_tags();
     }
 
     /**
