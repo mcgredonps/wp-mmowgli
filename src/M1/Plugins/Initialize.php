@@ -544,6 +544,12 @@ class Initialize
         Card::register_meta_boxes();
     }
 
+    /**
+     * Custom action to print the new card button
+     * @param  string $button_text The text of the button
+     * @return null   Echos data
+     * @category hook
+     */
     public function print_new_card_button($button_text = 'Create a new card')
     {
         echo "<div class='bootstrap-mmowgli'>";
