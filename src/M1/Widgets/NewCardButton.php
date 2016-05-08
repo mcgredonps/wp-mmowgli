@@ -3,6 +3,7 @@
 namespace M1\Widgets;
 
 use Former\Facades\Former;
+use M1\Classes\Helper;
 
 class NewCardButton extends \WP_Widget
 {
@@ -30,6 +31,10 @@ class NewCardButton extends \WP_Widget
      */
     public function widget($args, $instance)
     {
+        if (!Helper::is_game_page()) {
+            return;
+        }
+
         if (isset($args['before_widget'])) {
             echo $args['before_widget'];
         }

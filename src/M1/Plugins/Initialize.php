@@ -576,7 +576,7 @@ class Initialize
      */
     public function localize_scripts()
     {
-        $localized_data = array('ajax_url' => admin_url('admin-ajax.php'));
+        $localized_data = array('ajax_url' => admin_url('admin-ajax.php'), 'is_game_page' => Helper::is_game_page() ? 'true' : 'false');
 
         wp_localize_script(Config::$plugin_prefix . '-script', Config::$plugin_prefix, $localized_data);
     }
