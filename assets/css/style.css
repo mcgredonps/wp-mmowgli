@@ -11,3 +11,11 @@
 .bootstrap-mmowgli .new-game-card {
   width: 100%;
 }
+
+.bootstrap-mmowgli .modal-dialog {
+    margin-top: 100px;
+}
+
+.bootstrap-mmowgli .modal-header .close {
+    margin-top: -10px;
+}

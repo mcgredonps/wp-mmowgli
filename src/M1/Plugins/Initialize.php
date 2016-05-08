@@ -44,6 +44,12 @@ class Initialize
 
 
 
+        add_action('wp_ajax_' . 'yolo', array(&$this, 'yolo'), 10, 0);
+
+        add_action('wp_ajax_nopriv_' . 'yolo', array(&$this, 'yolo'), 10, 0);
+
+
+
         add_action('admin_head', array(&$this, 'admin_head'), 10, 0);
 
         add_action('wp_head', array(&$this, 'wp_head'), 10, 0);
@@ -115,6 +121,12 @@ class Initialize
 
 
         add_action('print_new_card_button', array(&$this, 'print_new_card_button'), 10, 1);
+
+        add_action('wp_footer', array(&$this, 'print_new_card_modal'), 10, 0);
+    }
+
+    public function yolo()
+    {
     }
 
     /**
@@ -141,7 +153,7 @@ class Initialize
         }
 
         if (Card::instance()->set_post($post)->is_card_post_type()) {
-            return 'Enter ' . Card::$post_type . ' title here';
+            return 'Enter ' . Card::$post_type . ' description here';
         }
 
         return $title;
@@ -548,11 +560,25 @@ class Initialize
     {
         wp_enqueue_style(Config::$plugin_prefix . '-bootstrap', MMOWGLI_PLUGIN_URL . 'assets/css/bootstrap-custom.css');
 
+        wp_enqueue_script(Config::$plugin_prefix . '-bootstrap', MMOWGLI_PLUGIN_URL . 'assets/js/bootstrap-custom.js', array( 'jquery'));
+
         wp_enqueue_style(Config::$plugin_prefix . '-font-awesome', MMOWGLI_PLUGIN_URL . 'assets/css/font-awesome.css');
 
         wp_enqueue_style(Config::$plugin_prefix . '-style', MMOWGLI_PLUGIN_URL . 'assets/css/style.css', array( Config::$plugin_prefix . '-bootstrap', Config::$plugin_prefix . '-font-awesome'));
 
-        wp_enqueue_script(Config::$plugin_prefix . '-script', MMOWGLI_PLUGIN_URL . 'assets/js/script.js', array( 'jquery'));
+        wp_enqueue_script(Config::$plugin_prefix . '-script', MMOWGLI_PLUGIN_URL . 'assets/js/script.js', array( 'jquery', Config::$plugin_prefix . '-bootstrap', ));
+    }
+
+    /**
+     * Lozalize scripts for the front end
+     * @return    null
+     * @category  function
+     */
+    public function localize_scripts()
+    {
+        $localized_data = array('ajax_url' => admin_url('admin-ajax.php'));
+
+        wp_localize_script(Config::$plugin_prefix . '-script', Config::$plugin_prefix, $localized_data);
     }
 
     /**
@@ -563,6 +589,8 @@ class Initialize
     public function wp_enqueue_scripts()
     {
         $this->enqueue_scripts();
+
+        $this->localize_scripts();
     }
 
     /**
@@ -573,6 +601,8 @@ class Initialize
     public function admin_enqueue_scripts()
     {
         $this->enqueue_scripts();
+
+        $this->localize_scripts();
     }
 
     /**
@@ -634,7 +664,36 @@ class Initialize
     public function print_new_card_button($button_text = 'Create a new card')
     {
         echo "<div class='bootstrap-mmowgli'>";
-        echo "<button type='button' class='btn btn-primary new-game-card'>{$button_text}</button>";
+        echo "<button class='btn btn-primary new-game-card' data-remote='false' data-toggle='modal' data-target='#newCardModal' href='remoteContent.html' type='button'>{$button_text}</button>";
         echo "</div>";
+    }
+
+    /**
+     * Custom action to print the new card modal template
+     * @return null   Echos data
+     * @category hook
+     */
+    public function print_new_card_modal()
+    {
+        echo '<!-- Default modal template -->
+              <div class="bootstrap-mmowgli">
+                <div class="modal fade" id="newCardModal" tabindex="-1" role="dialog" aria-labelledby="newCardModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="newCardModalLabel">Modal title</h4>
+                      </div>
+                      <div class="modal-body">
+                        ...
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Create Card</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>';
     }
 }

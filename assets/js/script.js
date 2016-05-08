@@ -6,12 +6,23 @@ jQuery(document).ready(function($) {
 
         initialize: function() {
 
-            $(".new-game-card").click(this.newButtonClick);
+            // When the modal show function is initiated
+            $("#newCardModal").on("show.bs.modal", this.showModal);
 
         },
-        newButtonClick: function() {
+        showModal: function(e) {
 
-            alert("button");
+          // var link = $(e.relatedTarget);
+
+          // $(this).find(".modal-body").load(link.attr("href"));
+
+          // Reset modal title
+          $(this).find(".modal-title").html('');
+
+          // Reset modal body
+          $(this).find(".modal-body").html('');
+
+
 
         }
 
