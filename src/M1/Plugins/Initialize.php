@@ -34,7 +34,13 @@ class Initialize
    */
     private function initialize_hooks()
     {
+        add_action('widgets_init', array(&$this, 'register_widgets'), 10);
+
+
+
         add_action('enter_title_here', array(&$this, 'enter_title_here'), 10, 2);
+
+
 
         add_action('admin_head', array(&$this, 'admin_head'), 10, 0);
 
@@ -93,6 +99,15 @@ class Initialize
         add_filter('game_card_content', array(&$this, 'add_game_card_parent'), 15, 2);
 
         add_filter('game_card_content', array(&$this, 'add_game_card_children'), 25, 2);
+
+
+
+        add_action('print_new_card_button', array(&$this, 'print_new_card_button'), 10, 1);
+    }
+
+    public function register_widgets()
+    {
+        register_widget('\M1\Widgets\NewCard');
     }
 
     /**
@@ -465,6 +480,8 @@ class Initialize
         wp_enqueue_style(Config::$plugin_prefix . '-font-awesome', MMOWGLI_PLUGIN_URL . 'assets/css/font-awesome.css');
 
         wp_enqueue_style(Config::$plugin_prefix . '-style', MMOWGLI_PLUGIN_URL . 'assets/css/style.css', array( Config::$plugin_prefix . '-bootstrap', Config::$plugin_prefix . '-font-awesome'));
+
+        wp_enqueue_script(Config::$plugin_prefix . '-script', MMOWGLI_PLUGIN_URL . 'assets/js/script.js', array( 'jquery'));
     }
 
     /**
@@ -525,5 +542,12 @@ class Initialize
     public function register_game_card_post_types_meta_boxes()
     {
         Card::register_meta_boxes();
+    }
+
+    public function print_new_card_button($button_text = 'Create a new card')
+    {
+        echo "<div class='bootstrap-mmowgli'>";
+        echo "<button type='button' class='btn btn-primary new-game-card'>{$button_text}</button>";
+        echo "</div>";
     }
 }

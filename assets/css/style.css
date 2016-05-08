@@ -7,3 +7,7 @@
  border: 0 !important;
  text-decoration: none;
 }
+
+.bootstrap-mmowgli .new-game-card {
+  width: 100%;
+}
