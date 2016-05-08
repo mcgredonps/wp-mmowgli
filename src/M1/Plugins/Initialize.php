@@ -480,6 +480,8 @@ class Initialize
         wp_enqueue_style(Config::$plugin_prefix . '-font-awesome', MMOWGLI_PLUGIN_URL . 'assets/css/font-awesome.css');
 
         wp_enqueue_style(Config::$plugin_prefix . '-style', MMOWGLI_PLUGIN_URL . 'assets/css/style.css', array( Config::$plugin_prefix . '-bootstrap', Config::$plugin_prefix . '-font-awesome'));
+
+        wp_enqueue_script(Config::$plugin_prefix . '-script', MMOWGLI_PLUGIN_URL . 'assets/js/script.js', array( 'jquery'));
     }
 
     /**
