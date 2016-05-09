@@ -16,7 +16,7 @@ Requirements
 
 PHP 5.3.2 or above (at least 5.3.4 recommended to avoid potential bugs).
 
-Todo
+Todo / In Progress
 -------
 1. Functionality
     * Wire up the new card modal on the front end
