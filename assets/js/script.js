@@ -30,4 +30,12 @@ jQuery(document).ready(function($) {
 
     MMOWGLI.initialize();
 
+    // Hide order attribute on wp-admin
+    // TODO Add dynamic selector for post type
+    $( "body.wp-admin #parent_id" )
+      .next( "p" )
+      .css( "display", "none" )
+      .next( "p" )
+      .css( "display", "none" );
+
 });
