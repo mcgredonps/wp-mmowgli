@@ -1,7 +1,7 @@
 WP MMOWGLI
 ========================================
 
-MMOWGLI stands for Massive Multiplayer Online War Game Leveraging the Internet. It is a message-based game used to encourage innovative thinking by many people, connected via the internet. This project is based on the original MMOWGLI project (https://portal.mmowgli.nps.edu/) initiated by the Office of Naval Research (ONR) for the United States Navy. This project aims to port MMOWGLI capabilities on the open-source WordPress framework.
+MMOWGLI stands for Massive Multiplayer Online War Game Leveraging the Internet. It is a message-based game used to encourage innovative thinking by many people, connected via the internet. This project is based on the original MMOWGLI project (https://portal.mmowgli.nps.edu/) initiated by the Office of Naval Research (ONR) for the United States Navy. This project aims to port MMOWGLI capabilities on the open-source WordPress framework. [Click here](https://github.com/echo1consulting/wp-mmowgli/tree/master/raw) to view screenshots of the plugin.
 
 Installation / Usage
 --------------------
