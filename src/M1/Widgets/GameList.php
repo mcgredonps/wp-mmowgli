@@ -12,7 +12,7 @@ class GameList extends \WP_Widget
     public $widget = array( 'id'          => 'mmowgli-game-lst',
                             'name'        => 'Game - List of Games',
                             'description' => 'Prints a list of games.',
-                            'defaults'    => array( 'widget_title' => 'Create a new card', 'sort_by' => 'post_title', 'sort_order' => 'asc' ),
+                            'defaults'    => array( 'widget_title' => 'All Games', 'sort_by' => 'post_title', 'sort_order' => 'asc' ),
                           );
 
 
@@ -81,7 +81,7 @@ class GameList extends \WP_Widget
         $instance = wp_parse_args((array) $instance, $this->widget['defaults']);
 
         echo '<p>';
-        echo Former::label('Title:')->for($this->get_field_id('widget_title'));
+        echo Former::label('Widget Title:')->for($this->get_field_id('widget_title'));
         echo Former::text()->setAttribute('class', 'widefat')
                            ->setAttribute('id', $this->get_field_id('widget_title'))
                            ->setAttribute('name', $this->get_field_name('widget_title'))
