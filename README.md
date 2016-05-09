@@ -16,6 +16,17 @@ Requirements
 
 PHP 5.3.2 or above (at least 5.3.4 recommended to avoid potential bugs).
 
+Todo
+-------
+1. Functionality
+    * Wire up the new card modal on the front end
+    * Wire up the reply to card modal on the front end
+    * Wire up the edit card modal on the front end
+    * Wire up the assigning of points to the user creating the card
+2. Widgets
+    * Logged in user and user points
+    * Sortable leaderboard 
+
 License
 -------
 
