@@ -8,11 +8,11 @@ class Helper
 {
 
     /**
-     * Accesses the global post object to determine if we are on a game page
+     * Accesses the global post object to determine if we are on a mmowgli page
      * @return boolean Returns true if we are on a game page
      * @category function
      */
-    public static function is_game_page()
+    public static function is_mmowgli_page()
     {
         if (is_single()) {
             global $post;
@@ -29,6 +29,41 @@ class Helper
         return false;
     }
 
+    /**
+     * Accesses the global post object to determine if we are on a card page
+     * @return boolean Returns true if we are on a game page
+     * @category function
+     */
+    public static function is_card_page()
+    {
+        if (is_single()) {
+            global $post;
+
+            if (Card::instance()->set_post($post)->is_card_post_type()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Accesses the global post object to determine if we are on a game page
+     * @return boolean Returns true if we are on a game page
+     * @category function
+     */
+    public static function is_game_page()
+    {
+        if (is_single()) {
+            global $post;
+
+            if (Game::instance()->set_post($post)->is_game_post_type()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 
     /**
      * Get the card type square as html

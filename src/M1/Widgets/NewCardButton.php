@@ -31,7 +31,7 @@ class NewCardButton extends \WP_Widget
      */
     public function widget($args, $instance)
     {
-        if (!Helper::is_game_page()) {
+        if (!Helper::is_mmowgli_page()) {
             return;
         }
 
