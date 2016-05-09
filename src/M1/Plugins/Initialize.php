@@ -12,7 +12,7 @@ class Initialize
 
     private static $instance;
 
-    private $widgets = array('NewCardButton', 'GameList');
+    private $widgets = array('EditCardButton', 'GameList', 'NewCardButton');
 
     /**
      * Ensure that we are only working with one instance of this Classes
@@ -119,6 +119,7 @@ class Initialize
         add_filter('game_card_content', array(&$this, 'add_game_card_children'), 25, 2);
 
 
+        add_action('print_edit_card_button', array(&$this, 'print_edit_card_button'), 10, 1);
 
         add_action('print_new_card_button', array(&$this, 'print_new_card_button'), 10, 1);
 
@@ -393,7 +394,7 @@ class Initialize
     public function add_game_description($content, $post)
     {
         $game_description = nl2br(Helper::get_game_description($post->ID));
-        
+
         return $content . "<div class='bootstrap-mmowgli'>" . '<p>' . $game_description . '</p>' . '</div>';
     }
 
@@ -659,6 +660,19 @@ class Initialize
     public function register_game_card_post_types_meta_boxes()
     {
         Card::register_meta_boxes();
+    }
+
+    /**
+     * Custom action to print the edit card button
+     * @param  string $button_text The text of the button
+     * @return null   Echos data
+     * @category hook
+     */
+    public function print_edit_card_button($button_text = 'Edit card')
+    {
+        echo "<div class='bootstrap-mmowgli'>";
+        echo "<button class='btn btn-primary new-game-card' data-remote='false' data-toggle='modal' data-target='#newCardModal' href='remoteContent.html' type='button'>{$button_text}</button>";
+        echo "</div>";
     }
 
     /**
