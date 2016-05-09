@@ -23,7 +23,7 @@ Todo
     * Wire up the reply to card modal on the front end
     * Wire up the edit card modal on the front end
     * Wire up the assigning of points to the user creating the card
-2. Widgets
+2. Shortcodes / Widgets
     * Logged in user and user points
     * Sortable leaderboard 
 
