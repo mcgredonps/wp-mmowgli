@@ -5,13 +5,13 @@ namespace M1\Widgets;
 use Former\Facades\Former;
 use M1\Classes\Helper;
 
-class NewCardButton extends \WP_Widget
+class NewMainCardButton extends \WP_Widget
 {
 
-    public $widget = array( 'id'          => 'mmowgli-new-card-button',
-                            'name'        => 'Game - New Card Button',
-                            'description' => 'Prints a button that enables a user to create a new game card from the front end.',
-                            'defaults'    => array( 'button_text' => 'Create a new card' ),
+    public $widget = array( 'id'          => 'mmowgli-new-main-card-button',
+                            'name'        => 'Game - New Main Card Button',
+                            'description' => 'Prints a button that enables a user to create a new main card from the front end.',
+                            'defaults'    => array( 'button_text' => 'Create a main card' ),
                           );
 
 
@@ -78,6 +78,10 @@ class NewCardButton extends \WP_Widget
     public function form($instance)
     {
         $instance = wp_parse_args((array) $instance, $this->widget['defaults']);
+
+        echo '<p>';
+        echo $this->widget['description'];
+        echo '</p>';
 
         echo '<p>';
         echo Former::label('Button Title:')->for($this->get_field_id('button_text'));

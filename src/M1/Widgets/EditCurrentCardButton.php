@@ -5,11 +5,11 @@ namespace M1\Widgets;
 use Former\Facades\Former;
 use M1\Classes\Helper;
 
-class EditCardButton extends \WP_Widget
+class EditCurrentCardButton extends \WP_Widget
 {
 
-    public $widget = array( 'id'          => 'mmowgli-edit-card-button',
-                            'name'        => 'Game - Edit Card Button',
+    public $widget = array( 'id'          => 'mmowgli-edit-current-card-button',
+                            'name'        => 'Game - Edit Current Card Button',
                             'description' => 'Prints a button that enables a user to edit their game card from the front end.',
                             'defaults'    => array( 'button_text' => 'Edit this card' ),
                           );
@@ -78,6 +78,10 @@ class EditCardButton extends \WP_Widget
     public function form($instance)
     {
         $instance = wp_parse_args((array) $instance, $this->widget['defaults']);
+
+        echo '<p>';
+        echo $this->widget['description'];
+        echo '</p>';
 
         echo '<p>';
         echo Former::label('Button Title:')->for($this->get_field_id('button_text'));

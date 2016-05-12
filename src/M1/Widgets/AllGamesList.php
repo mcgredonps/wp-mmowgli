@@ -6,12 +6,12 @@ use \M1\Classes\Game;
 use \M1\Classes\Helper;
 use Former\Facades\Former;
 
-class GameList extends \WP_Widget
+class AllGamesList extends \WP_Widget
 {
 
-    public $widget = array( 'id'          => 'mmowgli-game-lst',
-                            'name'        => 'Game - List of Games',
-                            'description' => 'Prints a list of games.',
+    public $widget = array( 'id'          => 'mmowgli-all-game-lst',
+                            'name'        => 'Game - List of all Games',
+                            'description' => 'Prints a list of all games.',
                             'defaults'    => array( 'widget_title' => 'All Games', 'sort_by' => 'post_title', 'sort_order' => 'asc' ),
                           );
 
@@ -79,6 +79,10 @@ class GameList extends \WP_Widget
     public function form($instance)
     {
         $instance = wp_parse_args((array) $instance, $this->widget['defaults']);
+
+        echo '<p>';
+        echo $this->widget['description'];
+        echo '</p>';
 
         echo '<p>';
         echo Former::label('Widget Title:')->for($this->get_field_id('widget_title'));

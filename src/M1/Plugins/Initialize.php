@@ -12,7 +12,7 @@ class Initialize
 
     private static $instance;
 
-    private $widgets = array('EditCardButton', 'GameList', 'NewCardButton');
+    private $widgets = array( 'AllGamesList', 'EditCurrentCardButton', 'NewMainCardButton');
 
     /**
      * Ensure that we are only working with one instance of this Classes
