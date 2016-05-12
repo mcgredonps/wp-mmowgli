@@ -531,7 +531,8 @@ class Initialize
      */
     public function redirect_post_location_args($location, $post_id)
     {
-        return add_query_arg(array(Config::$refresh_permalinks_key => 'true', '_wpnonce' => wp_create_nonce(Config::$refresh_permalinks_nonce)), $location);
+        return add_query_arg(array( Config::$refresh_permalinks_key   => 'true',
+                                    '_wpnonce'                        => wp_create_nonce(Config::$refresh_permalinks_nonce)), $location);
     }
 
     /**
@@ -673,7 +674,9 @@ class Initialize
     public function print_edit_card_button($button_text = 'Edit this card!')
     {
         echo "<div class='bootstrap-mmowgli'>";
-        echo "<button class='btn btn-default edit-card-btn action-card-btn' data-remote='false' data-toggle='modal' data-target='#newCardModal' href='remoteContent.html' type='button'>{$button_text}</button>";
+        echo "<button class='btn btn-default edit-card-btn action-card-btn'
+                data-remote='false' data-toggle='modal' data-target='#newCardModal'
+                href='remoteContent.html' type='button'>{$button_text}</button>";
         echo "</div>";
     }
 
@@ -686,7 +689,9 @@ class Initialize
     public function print_reply_card_button($button_text = 'Reply to this card!')
     {
         echo "<div class='bootstrap-mmowgli'>";
-        echo "<button class='btn btn-primary reply-card-btn action-card-btn' data-remote='false' data-toggle='modal' data-target='#newCardModal' href='remoteContent.html' type='button'>{$button_text}</button>";
+        echo "<button class='btn btn-primary reply-card-btn action-card-btn'
+                data-remote='false' data-toggle='modal' data-target='#newCardModal'
+                href='remoteContent.html' type='button'>{$button_text}</button>";
         echo "</div>";
     }
 
@@ -699,7 +704,9 @@ class Initialize
     public function print_new_card_button($button_text = 'Create a new main card!')
     {
         echo "<div class='bootstrap-mmowgli'>";
-        echo "<button class='btn btn-success new-card-btn action-card-btn' data-remote='false' data-toggle='modal' data-target='#newCardModal' href='remoteContent.html' type='button'>{$button_text}</button>";
+        echo "<button class='btn btn-success new-card-btn action-card-btn'
+                data-remote='false' data-toggle='modal' data-target='#newCardModal'
+                href='remoteContent.html' type='button'>{$button_text}</button>";
         echo "</div>";
     }
 
