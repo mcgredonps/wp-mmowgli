@@ -12,7 +12,11 @@ class Initialize
 
     private static $instance;
 
-    private $widgets = array( 'AllGamesList', 'EditCurrentCardButton', 'NewMainCardButton', 'ReplyCurrentCardButton');
+    private $endpoints = array( 'edit_current_card', 'new_main_card', 'reply_current_card' );
+
+    private $endpoint_types = array('action', 'view');
+
+    private $widgets = array( 'AllGamesList', 'EditCurrentCardButton', 'NewMainCardButton', 'ReplyCurrentCardButton' );
 
     /**
      * Ensure that we are only working with one instance of this Classes
@@ -41,12 +45,6 @@ class Initialize
 
 
         add_action('enter_title_here', array(&$this, 'enter_title_here'), 10, 2);
-
-
-
-        add_action('wp_ajax_' . 'yolo', array(&$this, 'yolo'), 10, 0);
-
-        add_action('wp_ajax_nopriv_' . 'yolo', array(&$this, 'yolo'), 10, 0);
 
 
 
@@ -119,6 +117,7 @@ class Initialize
         add_filter('game_card_content', array(&$this, 'add_game_card_children'), 25, 2);
 
 
+
         add_action('print_edit_card_button', array(&$this, 'print_edit_card_button'), 10, 1);
 
         add_action('print_reply_card_button', array(&$this, 'print_reply_card_button'), 10, 1);
@@ -126,10 +125,84 @@ class Initialize
         add_action('print_new_card_button', array(&$this, 'print_new_card_button'), 10, 1);
 
         add_action('wp_footer', array(&$this, 'print_new_card_modal'), 10, 0);
+
+
+
+        foreach ($this->endpoints as $endpoint) {
+            foreach ($this->endpoint_types as $endpoint_type) {
+                $callback = $endpoint . '_' . $endpoint_type;
+
+                add_action('wp_ajax_' . $callback, array(&$this, $callback), 10, 0);
+
+                add_action('wp_ajax_nopriv_' . $callback, array(&$this, $endpoint), 10, 0);
+            }
+        }
     }
 
-    public function yolo()
+    /**
+     * Custom ajax action
+     * @todo
+     * @return wp_die
+     * @category hook
+     */
+    public function edit_current_card_action()
     {
+        wp_die($_GET['action']);
+    }
+
+    /**
+     * Custom ajax view
+     * @todo
+     * @return wp_die
+     * @category hook
+     */
+    public function edit_current_card_view()
+    {
+        wp_die($_GET['action']);
+    }
+
+    /**
+     * Custom ajax action
+     * @todo
+     * @return wp_die
+     * @category hook
+     */
+    public function new_main_card_action()
+    {
+        wp_die($_GET['action']);
+    }
+
+    /**
+     * Custom ajax view
+     * @todo
+     * @return wp_die
+     * @category hook
+     */
+    public function new_main_card_view()
+    {
+        wp_die($_GET['action']);
+    }
+
+    /**
+     * Custom ajax action
+     * @todo
+     * @return wp_die
+     * @category hook
+     */
+    public function reply_current_card_action()
+    {
+        wp_die($_GET['action']);
+    }
+
+    /**
+     * Custom ajax view
+     * @todo
+     * @return wp_die
+     * @category hook
+     */
+    public function reply_current_card_view()
+    {
+        wp_die($_GET['action']);
     }
 
     /**
