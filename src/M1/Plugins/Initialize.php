@@ -12,7 +12,7 @@ class Initialize
 
     private static $instance;
 
-    private $widgets = array( 'AllGamesList', 'EditCurrentCardButton', 'NewMainCardButton');
+    private $widgets = array( 'AllGamesList', 'EditCurrentCardButton', 'NewMainCardButton', 'ReplyCurrentCardButton');
 
     /**
      * Ensure that we are only working with one instance of this Classes
@@ -120,6 +120,8 @@ class Initialize
 
 
         add_action('print_edit_card_button', array(&$this, 'print_edit_card_button'), 10, 1);
+
+        add_action('print_reply_card_button', array(&$this, 'print_reply_card_button'), 10, 1);
 
         add_action('print_new_card_button', array(&$this, 'print_new_card_button'), 10, 1);
 
@@ -668,10 +670,23 @@ class Initialize
      * @return null   Echos data
      * @category hook
      */
-    public function print_edit_card_button($button_text = 'Edit card')
+    public function print_edit_card_button($button_text = 'Edit this card!')
     {
         echo "<div class='bootstrap-mmowgli'>";
-        echo "<button class='btn btn-primary new-game-card' data-remote='false' data-toggle='modal' data-target='#newCardModal' href='remoteContent.html' type='button'>{$button_text}</button>";
+        echo "<button class='btn btn-default edit-card-btn action-card-btn' data-remote='false' data-toggle='modal' data-target='#newCardModal' href='remoteContent.html' type='button'>{$button_text}</button>";
+        echo "</div>";
+    }
+
+    /**
+     * Custom action to print the edit card button
+     * @param  string $button_text The text of the button
+     * @return null   Echos data
+     * @category hook
+     */
+    public function print_reply_card_button($button_text = 'Reply to this card!')
+    {
+        echo "<div class='bootstrap-mmowgli'>";
+        echo "<button class='btn btn-primary reply-card-btn action-card-btn' data-remote='false' data-toggle='modal' data-target='#newCardModal' href='remoteContent.html' type='button'>{$button_text}</button>";
         echo "</div>";
     }
 
@@ -681,10 +696,10 @@ class Initialize
      * @return null   Echos data
      * @category hook
      */
-    public function print_new_card_button($button_text = 'Create a new card')
+    public function print_new_card_button($button_text = 'Create a new main card!')
     {
         echo "<div class='bootstrap-mmowgli'>";
-        echo "<button class='btn btn-primary new-game-card' data-remote='false' data-toggle='modal' data-target='#newCardModal' href='remoteContent.html' type='button'>{$button_text}</button>";
+        echo "<button class='btn btn-success new-card-btn action-card-btn' data-remote='false' data-toggle='modal' data-target='#newCardModal' href='remoteContent.html' type='button'>{$button_text}</button>";
         echo "</div>";
     }
 

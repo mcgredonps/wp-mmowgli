@@ -11,7 +11,7 @@ class NewMainCardButton extends \WP_Widget
     public $widget = array( 'id'          => 'mmowgli-new-main-card-button',
                             'name'        => 'Game - New Main Card Button',
                             'description' => 'Prints a button that enables a user to create a new main card from the front end.',
-                            'defaults'    => array( 'button_text' => 'Create a main card' ),
+                            'defaults'    => array( 'button_text' => 'Create a main card!' ),
                           );
 
 

@@ -5,13 +5,13 @@ namespace M1\Widgets;
 use Former\Facades\Former;
 use M1\Classes\Helper;
 
-class EditCurrentCardButton extends \WP_Widget
+class ReplyCurrentCardButton extends \WP_Widget
 {
 
-    public $widget = array( 'id'          => 'mmowgli-edit-current-card-button',
-                            'name'        => 'Game - Edit Current Card Button',
-                            'description' => 'Prints a button that enables a user to edit their card from the front end.',
-                            'defaults'    => array( 'button_text' => 'Edit this card!' ),
+    public $widget = array( 'id'          => 'mmowgli-reply-current-card-button',
+                            'name'        => 'Game - Reply to Current Card Button',
+                            'description' => 'Prints a button that enables a user to reply to the current card from the front end.',
+                            'defaults'    => array( 'button_text' => 'Reply to this card!' ),
                           );
 
 
@@ -45,7 +45,7 @@ class EditCurrentCardButton extends \WP_Widget
 
         $button_text = $instance['button_text'];
 
-        do_action('print_edit_card_button', $button_text);
+        do_action('print_reply_card_button', $button_text);
 
         if (isset($args['after_widget'])) {
             echo $args['after_widget'];
